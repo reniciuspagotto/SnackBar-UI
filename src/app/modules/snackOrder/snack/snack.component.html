@@ -1,0 +1,19 @@
+<div class="container">
+  <div *ngFor="let snack of snacks ; let i = index" class="cards">
+    <div class="card_container">
+      <div class="card_image">
+        <img src="http://s2.glbimg.com/567c5j5D6pXPAQHL_f1dGa35l3w=/645x388/i.glbimg.com/og/ig/infoglobo1/f/original/2015/11/09/tt_burger_hamburguer_de_shitake_tomas_rangel.jpg">
+      </div>
+      <div class="card_title">
+        {{snack.name}}
+      </div>
+      <div class="card_qtd">
+        <td class="input_qtd"><input placeholder="Digite a quantidade" type="number" min="0" class="center-input" value="{{snack.quantidade}}"
+            (input)="valuechange($event, i)"></td>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn container_btn" type="submit" name="action" (click)="nextPage(snacks)">
+    <i class="material-icons right">Proximo</i>
+  </button>

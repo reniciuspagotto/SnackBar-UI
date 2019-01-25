@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="container">
+    <div class="cards" *ngFor="let snack of snacks ; let i = index">
+      <div class="card_container">
+        <div class="card_title">
+          {{snack.name}}
+        </div>
+        <div class="card_img">
+          <img class="order_image" src="http://s2.glbimg.com/567c5j5D6pXPAQHL_f1dGa35l3w=/645x388/i.glbimg.com/og/ig/infoglobo1/f/original/2015/11/09/tt_burger_hamburguer_de_shitake_tomas_rangel.jpg">
+        </div>
+        <div class="card_content">
+          <div class="card_ingredients">
+            <ul>
+              <li *ngFor="let item of ingredients">
+                {{item.name}} - R$ {{item.price}}
+              </li>
+            </ul>
+          </div>
+          <div class="line"></div>
+          <div class="card_choose">
+
+            <div *ngFor="let item of snack.ingredients ; let x = index">
+              <input type="number" min="0" value="{{item.quantity}}" (input)="quantityIngredientChange($event, i,x)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="btn btn-calculate-price" type="submit" name="action" (click)="save(snacks)">
+      <i class="material-icons right">Concluir Pedido</i>
+    </button>
+    <button class="btn" type="submit" name="action" (click)="newOrder(snacks)">
+      <i class="material-icons right">Novo Pedido</i>
+    </button>
+    <div class="total_cost">Custo total: R$ {{totalCost}}</div>
+  </div>
+</div>
